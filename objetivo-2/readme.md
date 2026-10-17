@@ -13,7 +13,7 @@ Se definieron dos estructuras principales:
 - Nodo:almacena el número de la ciudad, la distancia hasta la siguiente ciudad y el enlace al próximo nodo.
 - ListaCircular:administra la lista mediante un puntero a la cabeza e incorpora el método Insertar(), que permite crear nodos utilizando memoria dinámica.
 
-También se agregó el método Liberar(), encargado de liberar la memoria utilizada por los nodos al finalizar la ejecución.
+También se agregó el método Liberar() en el archivo de prueba, encargado de liberar la memoria dinámica utilizada por los nodos al finalizar la ejecución.
 
 Archivo: 2a-estructura.cpp
 
