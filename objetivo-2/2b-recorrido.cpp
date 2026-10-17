@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// Objetivo 2 - Inciso b
 // Recorre la lista circular e imprime las ciudades
 // y calcula la distancia total de la ruta.
 
