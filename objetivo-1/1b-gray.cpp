@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 
@@ -5,27 +6,42 @@ using namespace std;
 
 const int TAM = 8;
 
-// Aplica XOR a dos bits representados como caracteres.
-char XOR(char bit1, char bit2) {
-    return (bit1 == bit2) ? '0' : '1';
-}
+class CadenaBinaria {
+private:
+    string bits;
 
-// Calcula Gray para una cadena binaria de 8 bits.
-string Gray(const string& cadena) {
-    string resultado(TAM, '0');
-
-    // El primer bit se conserva.
-    resultado[0] = cadena[0];
-
-    // Se aplica XOR entre cada bit y el bit anterior.
-    for (int i = 1; i < TAM; i++) {
-        resultado[i] = XOR(cadena[i], cadena[i - 1]);
+public:
+    // Constructor: guarda una cadena binaria de 8 bits.
+    CadenaBinaria(string cadena) {
+        bits = cadena;
     }
 
-    return resultado;
-}
+    // Devuelve la cadena almacenada.
+    string ObtenerCadena() const {
+        return bits;
+    }
 
-// Comprueba la longitud y el contenido de la cadena.
+    // Calcula el codigo Gray de la cadena.
+    string Gray() const {
+        string resultado(TAM, '0');
+
+        // El primer bit se conserva.
+        resultado[0] = bits[0];
+
+        // Se aplica XOR entre cada bit y el anterior.
+        for (int i = 1; i < TAM; i++) {
+            if (bits[i] == bits[i - 1]) {
+                resultado[i] = '0';
+            } else {
+                resultado[i] = '1';
+            }
+        }
+
+        return resultado;
+    }
+};
+
+// Comprueba que la cadena tenga 8 bits binarios.
 bool esBinariaDeOchoBits(const string& cadena) {
     if (cadena.length() != TAM) {
         return false;
@@ -47,13 +63,16 @@ int main() {
     cin >> entrada;
 
     if (!esBinariaDeOchoBits(entrada)) {
-        cout << "Error: ingrese exactamente 8 caracteres, solo 0 y 1."
-             << endl;
+        cout << "Error: ingrese exactamente 8 caracteres, "
+             << "solo 0 y 1." << endl;
         return 1;
     }
 
-    cout << "Cadena original: " << entrada << endl;
-    cout << "Cadena Gray:     " << Gray(entrada) << endl;
+    CadenaBinaria cadena(entrada);
+
+    cout << "Cadena original: " << cadena.ObtenerCadena()
+         << endl;
+    cout << "Cadena Gray:     " << cadena.Gray() << endl;
 
     return 0;
 }
