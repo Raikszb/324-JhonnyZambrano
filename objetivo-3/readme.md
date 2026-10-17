@@ -47,6 +47,8 @@ La prueba permitió comprobar que las personas se distribuyen según su operaci�
 
 Archivo de prueba: prueba-distribuir.cpp
 
+El archivo prueba-distribuir.cpp contiene los elementos necesarios para ejecutar la prueba de forma independiente. En él se crean las cuatro personas, se llama a la función Distribuir() y se muestra el contenido de las tres colas.
+
 Conclusión
 
 Con esta actividad aplicamos el uso de estructuras, punteros y memoria dinámica en C++. Se implementó una cola enlazada y una función para distribuir las personas según la operación que necesitan realizar, respetando el orden en que llegaron.
