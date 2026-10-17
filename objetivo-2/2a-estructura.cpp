@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// Objetivo 2 - Inciso a
 // Estructuras para representar una ruta mediante
 // una lista circular enlazada.
 
