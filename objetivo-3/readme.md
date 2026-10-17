@@ -2,7 +2,7 @@ Objetivo 3: Sistema de colas
 
 Descripción
 
-En este objetivo se desarrolla un programa en C++ para distribuir a las personas que llegan a una clinica en tres colas diferentes, según el tipo de operación que necesitan realizar.
+En este objetivo se desarrolla un programa en C++ para distribuir a las personas que llegan a una oficina estatal en tres colas diferentes, según el tipo de operación que necesitan realizar.
 
 A cada persona se le asigna un número correlativo de llegada y el número de la operación que debe efectuar.
 
