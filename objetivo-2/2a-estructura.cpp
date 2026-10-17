@@ -2,28 +2,50 @@
 
 using namespace std;
 
-// Nodo de la lista circular que representa una ruta.
+// Objetivo 2 - Inciso a
+// Estructuras para representar una ruta mediante
+// una lista circular enlazada.
+
 struct Nodo {
-int ciudad;        // Número de la ciudad actual.
-int distancia;     // Distancia hasta la siguiente ciudad.
-Nodo* siguiente;   // Puntero al próximo nodo.
+    int ciudad;
+    int distancia;
+    Nodo* siguiente;
 
-// Constructor del nodo.
-Nodo(int c, int d) {
-    ciudad = c;
-    distancia = d;
-    siguiente = nullptr;
-}
-
+    // Constructor del nodo.
+    Nodo(int c, int d) {
+        ciudad = c;
+        distancia = d;
+        siguiente = nullptr;
+    }
 };
 
-// Estructura que representa la lista circular de la ruta.
 struct ListaCircular {
-Nodo* cabeza;
+    Nodo* cabeza;
 
-// Inicializa la lista vacía.
-ListaCircular() {
-    cabeza = nullptr;
-}
+    // Inicializa la lista vacia.
+    ListaCircular() {
+        cabeza = nullptr;
+    }
 
+    // Inserta una ciudad al final de la lista circular.
+    void Insertar(int ciudad, int distancia) {
+        Nodo* nuevo = new Nodo(ciudad, distancia);
+
+        // Si la lista esta vacia, el nodo se apunta a si mismo.
+        if (cabeza == nullptr) {
+            cabeza = nuevo;
+            nuevo->siguiente = cabeza;
+        } else {
+            Nodo* actual = cabeza;
+
+            // Busca el ultimo nodo de la lista.
+            while (actual->siguiente != cabeza) {
+                actual = actual->siguiente;
+            }
+
+            // Enlaza el nuevo nodo y conserva la circularidad.
+            actual->siguiente = nuevo;
+            nuevo->siguiente = cabeza;
+        }
+    }
 };
