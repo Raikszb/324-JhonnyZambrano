@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Nodo de la lista circular: ciudad, distancia al siguiente nodo y enlace.
+// Nodo de la lista circular.
 struct Nodo {
     int ciudad;
     int distancia;
@@ -14,9 +14,55 @@ struct Nodo {
     }
 };
 
-// Recorre la lista circular y calcula la distancia total.
+// Lista circular enlazada.
+struct ListaCircular {
+    Nodo* cabeza;
+
+    ListaCircular() {
+        cabeza = nullptr;
+    }
+
+    // Inserta una ciudad al final de la lista.
+    void Insertar(int ciudad, int distancia) {
+        Nodo* nuevo = new Nodo(ciudad, distancia);
+
+        if (cabeza == nullptr) {
+            cabeza = nuevo;
+            nuevo->siguiente = cabeza;
+        } else {
+            Nodo* actual = cabeza;
+
+            while (actual->siguiente != cabeza) {
+                actual = actual->siguiente;
+            }
+
+            actual->siguiente = nuevo;
+            nuevo->siguiente = cabeza;
+        }
+    }
+
+    // Libera la memoria utilizada por los nodos.
+    void Liberar() {
+        if (cabeza == nullptr) {
+            return;
+        }
+
+        Nodo* actual = cabeza->siguiente;
+
+        while (actual != cabeza) {
+            Nodo* temporal = actual;
+            actual = actual->siguiente;
+            delete temporal;
+        }
+
+        delete cabeza;
+        cabeza = nullptr;
+    }
+};
+
+// Recorre la lista e imprime las ciudades
+// y la distancia total del recorrido.
 void Recorrido(Nodo* cabeza) {
-    // Verifica si la lista esta vacia.
     if (cabeza == nullptr) {
         cout << "La lista esta vacia." << endl;
         return;
@@ -27,7 +73,6 @@ void Recorrido(Nodo* cabeza) {
 
     cout << "Ciudades del recorrido: ";
 
-    // Recorre los nodos hasta regresar al primero.
     do {
         cout << actual->ciudad << " ";
         distanciaTotal += actual->distancia;
@@ -39,31 +84,22 @@ void Recorrido(Nodo* cabeza) {
 }
 
 int main() {
-    // Datos ficticios para probar la funcion.
-    // Las distancias representan el tramo desde cada ciudad
-    // hasta la siguiente, incluido el regreso a la ciudad inicial.
-    Nodo* ciudad2 = new Nodo(2, 10);
-    Nodo* ciudad3 = new Nodo(3, 20);
-    Nodo* ciudad9 = new Nodo(9, 15);
-    Nodo* ciudad4 = new Nodo(4, 12);
-    Nodo* ciudad6 = new Nodo(6, 8);
+    ListaCircular ruta;
 
-    // Enlaza los nodos formando una lista circular.
-    ciudad2->siguiente = ciudad3;
-    ciudad3->siguiente = ciudad9;
-    ciudad9->siguiente = ciudad4;
-    ciudad4->siguiente = ciudad6;
-    ciudad6->siguiente = ciudad2;
+    // Distancias ficticias para comprobar el funcionamiento.
+    // La distancia de la ciudad 6 corresponde al regreso
+    // a la ciudad 2, cerrando el recorrido circular.
+    ruta.Insertar(2, 10);
+    ruta.Insertar(3, 20);
+    ruta.Insertar(9, 15);
+    ruta.Insertar(4, 12);
+    ruta.Insertar(6, 8);
 
-    // Muestra las ciudades y calcula la distancia total.
-    Recorrido(ciudad2);
+    // Mostrar el recorrido y calcular su distancia total.
+    Recorrido(ruta.cabeza);
 
-    // Libera la memoria reservada dinamicamente.
-    delete ciudad6;
-    delete ciudad4;
-    delete ciudad9;
-    delete ciudad3;
-    delete ciudad2;
+    // Liberar la memoria dinámica.
+    ruta.Liberar();
 
     return 0;
 }
