@@ -1,20 +1,19 @@
-Objetivo 1 — Cadenas binarias y función Gray
+Objetivo 1
 
 Descripción
 
-En esta carpeta desarrollamos el TAD CadenaBinaria y una función en C++ para obtener la representación Gray de una cadena binaria de ocho bits.
+En esta carpeta se describe el TAD CadenaBinaria y se implementa en C++ una función para obtener la representación Gray de una cadena binaria de ocho bits.
 
-Contenido
+## Contenido
 
-1a.md: descripción del tipo abstracto de datos y sus operaciones.
-
-1b-gray.cpp: implementación de la clase CadenaBinaria y la función Gray().
+- 1a.md:descripción del tipo abstracto de datos y sus operaciones.
+- 1b-gray.cpp:implementación de la función Gray(), la operación auxiliar XOR() y la validación de una cadena binaria de ocho bits.
 
 Funcionamiento
 
-El programa solicita una cadena de ocho bits, verifica que tenga la longitud correcta y que solo contenga los caracteres 0 y 1. Después, muestra la cadena original y su representación Gray.
+El programa solicita una cadena de ocho bits, verifica que tenga la longitud correcta y que solo contenga los caracteres 0 y 1. Si la entrada es válida, muestra la cadena original y su representación Gray.
 
-Se puede compilar con una herramienta online como https://www.onlinegdb.com/online_c++_compiler
+Se puede compilar y ejecutar en una herramienta online como OnlineGDB https://www.onlinegdb.com/online_c++_compiler
 
 Prueba de referencia
 
