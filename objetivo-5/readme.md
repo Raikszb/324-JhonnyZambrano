@@ -1,38 +1,48 @@
-Objetivo 5: Grafos y recorrido del cartero
+Objetivo 5
 
 Descripción
 
-Se representa el mapa de la figura 1 mediante un grafo no dirigido. Cada cruce se identifica con un vértice (A-F) y cada calle numerada con una arista.
+En esta carpeta se presenta la representación del mapa de la figura 1 mediante un grafo no dirigido y su implementación en C++. Cada cruce se identifica mediante un vértice y cada calle numerada mediante una arista. El programa calcula el grado de los vértices y realiza el recorrido utilizando el algoritmo de Fleury.
 
-Archivos
+Contenido
 
-- grafos.cpp: construye el grafo, calcula los grados e implementa el recorrido mediante el algoritmo de Fleury.
-
-Conexiones utilizadas
-
-- Calle 7: A-B
-- Calle 3: A-C
-- Calle 10: B-D
-- Calle 1: C-D
-- Calle 9: C-E
-- Calle 8: D-F
-- Calle 4: E-F
-
-Análisis del grafo
-
-Los grados obtenidos son A=2, B=2, C=3, D=3, E=2 y F=2. Los vértices C y D tienen grado impar. Por el criterio de Euler, el grafo no tiene circuito euleriano cerrado, pero sí admite un camino euleriano abierto que comienza en uno de esos vértices y termina en el otro.
+-grafos.cpp: construcción del grafo mediante una matriz de adyacencia, cálculo de los grados e implementación del algoritmo de Fleury para obtener el recorrido del cartero.
 
 Funcionamiento
 
-El programa almacena las conexiones en una matriz de adyacencia. Fleury selecciona una arista disponible, evita los puentes cuando existe otra alternativa y elimina cada calle una vez recorrida para no repetirla.
+El programa registra las siete calles del mapa y las conexiones entre los cruces A, B, C, D, E y F. Después calcula el grado de cada vértice para comprobar si existe un recorrido euleriano.
 
-Recorrido de referencia
+En este caso, los vértices C y D tienen grado impar. Por esta razón, el grafo no posee un ciclo euleriano cerrado, pero sí permite un camino euleriano abierto. El algoritmo de Fleury comienza en C, selecciona las calles procurando no utilizar puentes cuando existen otras alternativas y elimina cada arista después de recorrerla para evitar repetir calles.
 
-Calle 3 (C-A), calle 7 (A-B), calle 10 (B-D), calle 1 (D-C), calle 9 (C-E), calle 4 (E-F) y calle 8 (F-D).
+El recorrido pasa una sola vez por las siete calles y finaliza en D. Debido a que existen dos vértices de grado impar, no es posible regresar al punto de partida sin repetir una calle.
 
-El recorrido visita las siete calles una sola vez y termina en D. No puede regresar a C sin repetir una calle, porque la figura tiene dos vértices de grado impar.
+Compilación y ejecución
 
-Compilación
+El código se puede compilar y ejecutar en OnlineGDB https://www.onlinegdb.com/online_c++_compiler , seleccionando C++ como lenguaje. No es necesario introducir datos, ya que las conexiones del mapa están registradas en el programa.
 
-g++ grafos.cpp -o grafos
-./grafos
+Prueba de referencia
+
+Salida esperada:
+
+RECORRIDO DEL CARTERO - ALGORITMO DE FLEURY
+
+Grado de cada vertice:
+A: 2
+B: 2
+C: 3
+D: 3
+E: 2
+F: 2
+
+Hay dos vertices impares. El recorrido sera abierto.
+Inicio: C
+Calle 3: C -> A
+Calle 7: A -> B
+Calle 10: B -> D
+Calle 1: D -> C
+Calle 9: C -> E
+Calle 4: E -> F
+Calle 8: F -> D
+Fin: D
+
+Nota: el mapa permite recorrer cada calle una vez, pero no regresar al inicio sin repetir una calle.

@@ -1,31 +1,57 @@
-Objetivo 7: Búsqueda mediante tablas de dispersión
+
+Objetivo 7
 
 Descripción
 
-El programa organiza una colección de números enteros en cinco urnas y permite buscar continuamente números introducidos por el usuario, dentro del rango de 1 a 50.
+En esta carpeta se presenta un programa en C++ que permite buscar números enteros comprendidos entre 1 y 50 dentro de una estructura formada por cinco urnas. Para organizar los datos se utiliza una función hash basada en la operación módulo.
 
-Archivos
+Contenido
 
-- tablas-hash.cpp: distribución inicial, función hash y búsqueda.
-
-Función hash y numeración
-
-Se utiliza la función h(n) = n % 5. El resultado es una posición interna de 0 a 4. Para mostrar una urna numerada del 1 al 5 se suma uno a esa posición.
-
-Ejemplos:
-- 12 % 5 = 2: posición interna 2, urna visible 3.
-- 23 % 5 = 3: posición interna 3, urna visible 4.
-- 35 % 5 = 0: posición interna 0, urna visible 1.
-
-Datos iniciales
-
-El enunciado no especifica qué números deben venir cargados en las urnas. Para probar la búsqueda se utiliza esta colección de ejemplo: 7, 12, 18, 23, 31, 36, 42 y 49. Todos se distribuyen automáticamente con la función hash.
+-tablas-hash.cpp: definición de las cinco urnas, carga de los números de ejemplo, cálculo de la posición mediante la función hash y búsqueda de los valores introducidos por el usuario.
 
 Funcionamiento
 
-El programa calcula primero la posición asociada al número y revisa únicamente esa urna. Si lo encuentra, muestra su número de urna (1 a 5); si no, informa que no está en la estructura. El valor 0 permite finalizar.
+El programa carga inicialmente los números 7, 12, 18, 23, 31, 36, 42 y 49. Estos valores se distribuyen automáticamente en las cinco urnas mediante la función:
 
-Compilación
+h(n) = n % 5
 
-g++ tablas-hash.cpp -o tablas-hash
-./tablas-hash
+El resultado de la operación determina una posición interna entre 0 y 4. Para mostrar las urnas numeradas del 1 al 5, el programa suma uno a dicha posición. Por ejemplo, el número 12 produce una posición interna 2 y se muestra en la urna 3.
+
+Después de cargar los datos, el programa solicita números al usuario de forma continua. Si el número se encuentra almacenado, muestra en cuál urna está; de lo contrario, informa que no se encuentra en la estructura. El usuario puede introducir 0 para finalizar.
+
+La lista de números iniciales es una distribución de ejemplo, ya que el enunciado no especifica cuáles deben estar almacenados en las urnas.
+
+Compilación y ejecución
+
+El código se puede compilar y ejecutar en OnlineGDB https://www.onlinegdb.com/online_c++_compiler , seleccionando C++ como lenguaje. Se pueden introducir números entre 1 y 50 para probar la búsqueda. El número 0 permite finalizar el programa.
+
+Prueba de referencia
+
+Entrada:
+
+12
+16
+11
+7
+0
+
+Salida esperada:
+
+BUSQUEDA DE NUMEROS EN URNAS
+Introduzca un numero entre 1 y 50.
+Escriba 0 para finalizar.
+
+Numero: 12
+El numero 12 se encuentra en la urna 3.
+
+Numero: 16
+El numero no se encuentra en la estructura.
+
+Numero: 11
+El numero no se encuentra en la estructura.
+
+Numero: 7
+El numero 7 se encuentra en la urna 3.
+
+Numero: 0
+Programa finalizado.
